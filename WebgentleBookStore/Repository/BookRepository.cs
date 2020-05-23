@@ -20,7 +20,8 @@ namespace WebgentleBookStore.Repository
 
         public List<BookModel> SearchBook(string title, string authorName)
         {
-            return DataSource().Where(x => x.Title == title && x.Author == authorName).ToList();
+            return DataSource().Where(x => x.Title.Contains(title) || x.Author.Contains(authorName)).ToList();
+           // return DataSource().Where(x => x.Title == title && x.Author == authorName).ToList();
         }
         private List<BookModel> DataSource()
         {
@@ -29,7 +30,7 @@ namespace WebgentleBookStore.Repository
                 new BookModel (){Id = 1, Title="MVC", Author="yomi"},
                  new BookModel (){Id = 2, Title="Python", Author="seun"},
                   new BookModel (){Id = 3, Title="JavaScript", Author="kunle"},
-                   new BookModel (){Id = 4, Title="Php", Author="hope"},
+                   new BookModel (){Id = 4, Title="Php", Author="yomi"},
                     new BookModel (){Id = 5, Title="Java", Author="mike"}
             };
         }

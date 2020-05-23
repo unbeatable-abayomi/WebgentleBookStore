@@ -3,26 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using WebgentleBookStore.Models;
+using WebgentleBookStore.Repository;
 
 namespace WebgentleBookStore.Controllers
 {
     public class BookController : Controller
     {
+        private readonly BookRepository _bookRepository = null;
         //public IActionResult Index()
         //{
         //    return View();
         //}
-        public string GetAllBooks()
+        public BookController()
         {
-            return "Gotten all Books";
+            _bookRepository = new BookRepository();
         }
-        public string GetBook(int id)
+        public ViewResult GetAllBooks()
         {
-            return $"Gotten a single book with number {id}";
+            var data = _bookRepository.GetAllBooks();
+            return View(data);
         }
-        public string SearchBooks(string bookName, string authorName)
+        public BookModel GetBook(int id)
         {
-            return $" found book with the name: {bookName} found book with author name {authorName}";
+            return _bookRepository.GetBookById(id);
+        }
+        public List<BookModel> SearchBooks(string bookName, string authorName)
+        {
+            return _bookRepository.SearchBook(bookName,authorName);
         }
     }
 }

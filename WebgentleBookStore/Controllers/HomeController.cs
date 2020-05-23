@@ -8,13 +8,17 @@ namespace WebgentleBookStore.Controllers
 {
     public class HomeController: Controller
     {
-        public IActionResult newIndex()
+        //public IActionResult newIndex()
+        //{
+        //    return View();
+        //}
+        public ViewResult  Index()
         {
             return View();
         }
-        public string Index()
+        public ViewResult AboutUs()
         {
-            return "Webgentle";
+            return View();
         }
     }
 }
