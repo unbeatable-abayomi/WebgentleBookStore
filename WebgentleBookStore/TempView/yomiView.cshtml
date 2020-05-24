@@ -1,0 +1,70 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<h2>Hello from yomi view</h2>
+
+@*<h2>@DateTime.Now.ToString("d-M-yy")</h2>
+    <h2> Sum = @(4+9)</h2>
+
+    @{
+        int a = 20;
+        int b = 20;
+        int c = a + b;
+        <h3>@c</h3>
+    }
+
+    <h2>My Email is yomi@yahoo.com</h2>
+    <h2>iqwii  @@igwubor</h2>*@
+@*@{
+        int a = 3;
+    }
+
+    @if (a > 12)
+    {
+        <h2>tRUE</h2>
+    }else if(a == 23)
+    {
+        <h2>Game</h2>
+    }
+    else
+    {
+        <h3>FALSE</h3>
+    }
+
+    @{
+        int num1 = 2;
+        int num2 = 13;
+    }
+    <h3>Tenary Operator - @(num1 >10? num2 = 89 : num2 = 00)</h3>
+
+    <h2>Value od num2 = @num2</h2>*@
+
+@{
+    int aaa = 2;
+}
+@switch (aaa)
+{
+    case 1:<h2> I am 1</h2>
+        break;
+    case 2:<h2> I am 2</h2>
+        break;
+    case 3:<h2> I am 3</h2>
+        break;
+    default:<h2> I am none</h2>
+        break;
+}
+@{ 
+    var lists = new List<int>() { 23, 45, 67,33 };
+}
+@foreach(var item in lists)
+{
+    <h2>@item</h2>
+}
+@for (int i = 0; i < 10; i++)
+{
+    <h1>hello @i</h1>
+}
