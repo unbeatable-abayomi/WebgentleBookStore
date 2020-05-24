@@ -8,14 +8,24 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+
+    <link href="~/lib/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
     <link href="~/css/Site.css" rel="stylesheet" />
     <title>Index</title>
 </head>
-<body>
+<body class="container">
 
-    <h2>Welcome</h2>
+    <h2 class="h1">Welcome</h2>
+    <h6 class="display-4">Welcome home danny</h6>
     <img src="~/images/splash4.jpg" />
+    <input type="button" value="click me" class="btn btn-success"/> 
     <img src="~/MyStaticFiles/splash3.jpg" />
-    @Html.Label("FirstName","FirstName:", new {@class = "caption" })
+    @Html.Label("FirstName", "FirstName:", new { @class = "caption" })
 </body>
+<script src="~/lib/jquery/jquery.js"></script>
 </html>
+<script>
+    $(document).ready(function () {
+        alert("Page loaded");
+    });
+</script>
