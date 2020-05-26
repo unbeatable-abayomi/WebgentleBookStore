@@ -27,12 +27,13 @@ namespace WebgentleBookStore.Repository
         {
             return new List<BookModel>()
             {
-                new BookModel (){Id = 1, Title="MVC", Author="yomi"},
-                 new BookModel (){Id = 2, Title="Python", Author="seun"},
-                  new BookModel (){Id = 3, Title="JavaScript", Author="kunle"},
-                   new BookModel (){Id = 4, Title="Php", Author="yomi"},
-                    new BookModel (){Id = 5, Title="Java", Author="mike"}
+                new BookModel (){Id = 1, Title="MVC", Author="yomi", Description="The MVC Dot net Book"},
+                 new BookModel (){Id = 2, Title="Python", Author="seun",Description="All you need to know about the snake"},
+                  new BookModel (){Id = 3, Title="JavaScript", Author="kunle",Description="Better than eloquent javascript"},
+                   new BookModel (){Id = 4, Title="Php", Author="yomi",Description="The best backendless technology"},
+                    new BookModel (){Id = 5, Title="Java", Author="mike",Description="The highly respected java"},
+                    new BookModel (){Id = 6, Title="AzureDevops", Author="williams",Description="The best book on DevOps"}
             };
         }
-    }
+    }   
 }
