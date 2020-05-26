@@ -1,10 +1,4 @@
 ﻿
-@{
-    //ViewData["Title"] = "GetBook";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-    //or
-    //    Layout = "_Layout";
-}
 @using WebgentleBookStore.Models;
 @model BookModel
 
@@ -76,6 +70,33 @@
            
          
             
+        </div>
+    </div>
+</div>
+<hr/>
+<div class="py-5 bg-light">
+    <div class="container">
+        <h3 class="h3">Similar Books</h3>
+        <div class="row">
+            @for (int i = 0; i <= 5; i++)
+            {
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <svg class="bd-placeholder card-img-top" width="100%" height="225" xmlns="https://www.w3.org/2000/svg" preserveAspectRatio="" />
+                        <div class="card-body">
+                            <h3 class="card-title">book.Title</h3>
+                            <p class="card-text">book.Description</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a href="#" class="btn btn-sm btn-outline-secondary">Views Details</a>
+                                </div>
+                                <small class="text-muted">book.Author</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
         </div>
     </div>
 </div>
