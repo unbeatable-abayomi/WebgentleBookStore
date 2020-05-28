@@ -59,6 +59,9 @@ namespace WebgentleBookStore
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapDefaultControllerRoute();
+                //endpoints.MapControllerRoute(
+                //    name: "default",
+                //    pattern: "bookapp/{controller=Home}/{action=Index}/{id?}");
                 //("/", async context =>
                 //{
                 //    await context.Response.WriteAsync("Hello World!");

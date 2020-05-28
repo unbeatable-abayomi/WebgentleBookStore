@@ -11,22 +11,27 @@ namespace WebgentleBookStore.Controllers
     public class BookController : Controller
     {
         private readonly BookRepository _bookRepository = null;
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
+        [ViewData]
+        public string Title { get; set; }
+
+        //Or also for complex types
+        [ViewData]
+        public BookModel Book { get; set; }
         public BookController()
         {
             _bookRepository = new BookRepository();
         }
         public ViewResult GetAllBooks()
         {
+            Title = "Get_All_Books";
+            Book = new BookModel() {Author="ABAYOI",Language="ENGLISH" };
             var data = _bookRepository.GetAllBooks();
             return View(data);
         }
         public ViewResult GetBook(int id)
         {
-           var data = _bookRepository.GetBookById(id);
+            Title = "Get a Book";
+            var data = _bookRepository.GetBookById(id);
             return View(data);
         }
         public List<BookModel> SearchBooks(string bookName, string authorName)

@@ -1,6 +1,7 @@
 ﻿
-
-
+@*@{ 
+    Layout = null;
+}*@
 @*<html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -10,10 +11,17 @@
     <title>Index</title>
 </head>
 <body class="container">*@
-
+@{ 
+    dynamic data = ViewBag.Data;
+    var newData = ViewData["data"] as BookModel;
+    //ViewData["Title"] = "Home";
+}
 <section class="jumbotron text-center">
     <div class="container">
         <h1>Welcome to Book store</h1>
+        <h2>@newData.Author</h2>
+        <h2>@newData.Language</h2>
+        <h2>@ViewData["CustomProperty"]</h2>
         @*<p class="lead text-muted">
             lorem23 slsllllllllllllllllllllllllll
             <h2 class="h1">Welcome</h2>
@@ -24,7 +32,7 @@
             @Html.Label("FirstName", "FirstName:", new { @class = "caption" })
         </p>*@
         <p>
-            <a href="#" class="btn btn-primary my-2" >Search Books</a>
+            <a href="#" class="btn btn-primary my-2">Search Books</a>
         </p>
     </div>
 
