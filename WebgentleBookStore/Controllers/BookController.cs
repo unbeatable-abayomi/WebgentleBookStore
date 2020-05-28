@@ -24,12 +24,12 @@ namespace WebgentleBookStore.Controllers
         public ViewResult GetAllBooks()
         {
             Title = "Get_All_Books";
-            Book = new BookModel() {Author="ABAYOI",Language="ENGLISH" };
+            Book = new BookModel() {Author="ABAYOMI",Language="ENGLISH" };
             var data = _bookRepository.GetAllBooks();
             return View(data);
         }
 
-        [Route("book-details/{id}")]
+        [Route("book-details/{id}", Name = "bookDetailsRoute")]
         public ViewResult GetBook(int id)
         {
             Title = "Get a Book";
@@ -40,5 +40,18 @@ namespace WebgentleBookStore.Controllers
         {
             return _bookRepository.SearchBook(bookName,authorName);
         }
+
+
+        public ViewResult AddNewBook()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ViewResult AddNewBook(BookModel bookModel)
+        {
+            return View();
+        }
+
+
     }
 }
