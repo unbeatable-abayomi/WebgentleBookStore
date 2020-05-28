@@ -3,7 +3,13 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <link href="~/lib/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <environment include="Development">
+        <link href="~/lib/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
+    </environment>
+    <environment exclude="Development">
+        <link href="~/lib/twitter-bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    </environment>
+   
     @*<link href="~/css/Site.css" rel="stylesheet" />*@
     <title>@ViewData["Title"] |
     Book Store Application</title>
@@ -14,7 +20,7 @@
             <div class="container">
 
                 <a class="navbar-brand" href="/">
-                    <img src="~/images/splash4.jpg" width="30" height="30" />
+                    <img src="~/images/splash4.jpg" width="30" height="30" asp-append-version="true" />
                     Book Store
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,16 +36,19 @@
 
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Index" >Home</a>
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Aboutus" >About</a>
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Aboutus">About</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-controller="Home" asp-action="contactus">Contact</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Book" asp-action="Getallbooks" >All Books</a>
+                            <a class="nav-link text-dark" asp-controller="Book" asp-action="Getallbooks">All Books</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-protocol="http" asp-host="webgentle.com">New Books</a>
                         </li>
                     </ul>
                 </div>
@@ -55,7 +64,14 @@
             Copyright &copy; Book Store  @DateTime.Now.Year
         </div>
     </footer>
-    <script src="~/lib/jquery/jquery.js"></script>
+
+    <environment include="Development">
+        <script src="~/lib/jquery/jquery.js"></script>
+    </environment>
+    <environment exclude="Develpoment">
+        <script src="~/lib/jquery/jquery.min.js"></script>
+    </environment>
+  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 

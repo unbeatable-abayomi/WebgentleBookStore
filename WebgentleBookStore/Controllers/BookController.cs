@@ -28,6 +28,8 @@ namespace WebgentleBookStore.Controllers
             var data = _bookRepository.GetAllBooks();
             return View(data);
         }
+
+        [Route("book-details/{id}")]
         public ViewResult GetBook(int id)
         {
             Title = "Get a Book";
