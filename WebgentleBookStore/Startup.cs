@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using WebgentleBookStore.Data;
+using WebgentleBookStore.Repository;
 
 namespace WebgentleBookStore
 {
@@ -22,6 +23,8 @@ namespace WebgentleBookStore
         {
             services.AddDbContext<BookStoreContext>(options => options.UseSqlServer("Server=.;Database=BookStore;Integrated Security=True;"));
             services.AddControllersWithViews();
+
+            services.AddScoped<BookRepository, BookRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

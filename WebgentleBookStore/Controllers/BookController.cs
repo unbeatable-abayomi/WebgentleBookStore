@@ -17,9 +17,9 @@ namespace WebgentleBookStore.Controllers
         //Or also for complex types
         [ViewData]
         public BookModel Book { get; set; }
-        public BookController()
+        public BookController(BookRepository bookRepository)
         {
-            _bookRepository = new BookRepository();
+            _bookRepository = bookRepository;
         }
         public ViewResult GetAllBooks()
         {
@@ -42,13 +42,21 @@ namespace WebgentleBookStore.Controllers
         }
 
 
-        public ViewResult AddNewBook()
+        public ViewResult AddNewBook(bool isSuccess = false, int bookId = 0 )
         {
+            ViewBag.IsSuccess = isSuccess;
+            ViewBag.BookId = bookId;
             return View();
         }
         [HttpPost]
-        public ViewResult AddNewBook(BookModel bookModel)
+        public IActionResult AddNewBook(BookModel bookModel)
         {
+            int id =  _bookRepository.AddNewBook(bookModel);
+            if (id > 0)
+            {
+                return RedirectToAction(nameof(AddNewBook), new { isSuccess = true ,bookId = id});
+            }
+            
             return View();
         }
 
