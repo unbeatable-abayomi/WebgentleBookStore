@@ -25,6 +25,7 @@ namespace WebgentleBookStore
             services.AddControllersWithViews();
 
             services.AddScoped<BookRepository, BookRepository>();
+            services.AddScoped<CarRespositroy, CarRespositroy>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

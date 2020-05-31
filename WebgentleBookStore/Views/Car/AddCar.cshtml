@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewData["Title"] = "AddCar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model CarModel;
+
+<h1>AddCar</h1>
+
+<div class="container">
+    @if (ViewBag.isSuccess)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Congratualtions</strong> You Added A new car successfully.<br />
+            Click<a asp-controller="book" asp-action="Getbook" asp-route-id="@ViewBag.BookId">here</a> to view details;
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+    <div class="row">
+        <div class="col-md-12">
+            <form method="post" asp-controller="Car" asp-action="AddCar">
+                <div class="form-group">
+                    <label asp-for="Name"></label>
+                    <input asp-for="Name" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Model"></label>
+                    <input asp-for="Model" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Color"></label>
+                    <input asp-for="Color" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Price"></label>
+                    <input asp-for="Price" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Millage"></label>
+                    <input asp-for="Millage" class="form-control" />
+                </div>
+                <input type="submit" value="submit" class="btn btn-danger" />
+            </form>
+        </div>
+    </div>
+</div>
+
