@@ -21,19 +21,18 @@ namespace WebgentleBookStore.Controllers
         {
             _bookRepository = bookRepository;
         }
-        public ViewResult GetAllBooks()
+        public async Task<IActionResult> GetAllBooks()
         {
-            Title = "Get_All_Books";
-            Book = new BookModel() {Author="ABAYOMI",Language="ENGLISH" };
-            var data = _bookRepository.GetAllBooks();
+          
+            var data = await _bookRepository.GetAllBooks();
             return View(data);
         }
 
         [Route("book-details/{id}", Name = "bookDetailsRoute")]
-        public ViewResult GetBook(int id)
+        public async Task<IActionResult> GetBook(int id)
         {
-            Title = "Get a Book";
-            var data = _bookRepository.GetBookById(id);
+            
+            var data = await _bookRepository.GetBookById(id);
             return View(data);
         }
         public List<BookModel> SearchBooks(string bookName, string authorName)
@@ -49,14 +48,20 @@ namespace WebgentleBookStore.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult AddNewBook(BookModel bookModel)
+        public async Task<IActionResult> AddNewBook(BookModel bookModel)
         {
-            int id =  _bookRepository.AddNewBook(bookModel);
-            if (id > 0)
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(AddNewBook), new { isSuccess = true ,bookId = id});
+                int id = await _bookRepository.AddNewBook(bookModel);
+                if (id > 0)
+                {
+                    return RedirectToAction(nameof(AddNewBook), new { isSuccess = true, bookId = id });
+                }
+
+             
             }
-            
+            ViewBag.IsSuccess = false;
+            ViewBag.BookId = 0;
             return View();
         }
 
