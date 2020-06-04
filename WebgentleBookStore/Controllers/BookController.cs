@@ -62,6 +62,10 @@ namespace WebgentleBookStore.Controllers
             }
             ViewBag.IsSuccess = false;
             ViewBag.BookId = 0;
+
+
+            ModelState.AddModelError("", "There is an error");
+            ModelState.AddModelError("", "There is an error second One");
             return View();
         }
 
