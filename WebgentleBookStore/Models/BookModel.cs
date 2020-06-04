@@ -15,7 +15,7 @@ namespace WebgentleBookStore.Models
         public string Title { get; set; }
         [Required(ErrorMessage = "Please enter the author of your book")]
         public string Author { get; set; }
-        [StringLength(100, MinimumLength = 5)]
+         [StringLength(100, MinimumLength = 5)]
         [Required(ErrorMessage = "Please enter the error ")] 
         public string Description { get; set; }
 
