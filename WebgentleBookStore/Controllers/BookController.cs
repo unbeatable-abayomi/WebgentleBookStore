@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using WebgentleBookStore.Models;
 using WebgentleBookStore.Repository;
 
@@ -23,7 +25,7 @@ namespace WebgentleBookStore.Controllers
         }
         public async Task<IActionResult> GetAllBooks()
         {
-          
+
             var data = await _bookRepository.GetAllBooks();
             return View(data);
         }
@@ -31,19 +33,20 @@ namespace WebgentleBookStore.Controllers
         [Route("book-details/{id}", Name = "bookDetailsRoute")]
         public async Task<IActionResult> GetBook(int id)
         {
-            
+
             var data = await _bookRepository.GetBookById(id);
             return View(data);
         }
         public List<BookModel> SearchBooks(string bookName, string authorName)
         {
-            return _bookRepository.SearchBook(bookName,authorName);
+            return _bookRepository.SearchBook(bookName, authorName);
         }
 
 
-        public ViewResult AddNewBook(bool isSuccess = false, int bookId = 0 )
+        public ViewResult AddNewBook(bool isSuccess = false, int bookId = 0)
         {
-            ViewBag.Language = new List<string>() { "English","Hindi","Ducth"};
+            ViewBag.Language = new List<string>() { "English", "Hindi", "Ducth" };
+            ViewBag.Lang = new SelectList(GetLanguages(), "Id", "Text");
             ViewBag.IsSuccess = isSuccess;
             ViewBag.BookId = bookId;
             return View();
@@ -59,8 +62,10 @@ namespace WebgentleBookStore.Controllers
                     return RedirectToAction(nameof(AddNewBook), new { isSuccess = true, bookId = id });
                 }
 
-             
+
             }
+            ViewBag.Language = new List<string>() { "English", "Hindi", "Ducth" };
+            ViewBag.Lang = new SelectList(GetLanguages(), "Id","Text");
             ViewBag.IsSuccess = false;
             ViewBag.BookId = 0;
 
@@ -70,6 +75,15 @@ namespace WebgentleBookStore.Controllers
             return View();
         }
 
+        private List<LanguageModel> GetLanguages(){
 
+            return new List<LanguageModel>() {
+                    new LanguageModel (){Id=1, Text="Hindu"},
+                     new LanguageModel (){Id=2, Text="English"},
+                      new LanguageModel (){Id=3, Text="Ducth"},
+
+            };
+        
+        }
     }
 }
