@@ -43,6 +43,7 @@ namespace WebgentleBookStore.Controllers
 
         public ViewResult AddNewBook(bool isSuccess = false, int bookId = 0 )
         {
+            ViewBag.Language = new List<string>() { "English","Hindi","Ducth"};
             ViewBag.IsSuccess = isSuccess;
             ViewBag.BookId = bookId;
             return View();
